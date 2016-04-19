@@ -22,6 +22,7 @@ var CURRENT_PROJECTS = [
 var MAX_ID = Math.max.apply(null, $.map(CURRENT_PROJECTS, function(pj) { return pj.id; }));
 
 $(function(){
+
     var loadProjects = function($container, projects) {
         $.fn.append.apply($container, $.map(projects, function(pj) {
             return $("<tr>").append(
@@ -61,12 +62,18 @@ $(function(){
     // I could have written something similar using this documentation https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
 
     var getInfo = function(project_branch_reference) {
-        url = "https://api.github.com/repos/quixey/webdev-exercise/compare/" + base + "..." + project_branch_reference;
+
+        url = "https://api.github.com/repos/sebabelmar/webdev-exercise/compare/" + base + "..." + project_branch_reference;
         var request = null;
+
+        $
+
         request = new XMLHttpRequest();
         request.open("GET", url, false);
         request.send(null);
         res = JSON.parse(request.responseText);
+
+
         if(res.message == "Not Found") {
             alert("Choose Base or Invalid Branch Reference");
             return "";
@@ -125,9 +132,9 @@ $(function(){
         $("table tr").each(function() {
         var status = $(this).children("td").eq(6).text()
             if(status === "Pull or rebase"){
-            $(this).children("td").eq(6).addClass("red");
+                $(this).children("td").eq(6).addClass("red");
             }else{
-            $(this).children("td").eq(6).addClass("green");
+                $(this).children("td").eq(6).addClass("green");
             }
         });
     };
